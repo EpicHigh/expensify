@@ -1,7 +1,9 @@
 import React from "react";
+import ExpenseForm from "../components/ExpenseForm"
 
 export default () => (
 	<div>
-		<p>This is an editing expense page</p>
+		<h1>Add Expense</h1>
+		<ExpenseForm/>
 	</div>
 );
