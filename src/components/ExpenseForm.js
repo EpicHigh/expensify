@@ -5,14 +5,17 @@ import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
 
 export default class ExpenseForm extends Component {
-  state = {
-    description: "",
-    note: "",
-    amount: "",
-    createdAt: moment(),
-    calendarFocused: false,
-	  error: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      description: props.expense ? props.expense.description : "",
+      note: props.expense ? props.expense.note : "",
+      amount: props.expense ? props.expense.amount : "",
+      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      calendarFocused: false,
+      error: ""
+    };
+  }
 
   onDescriptionChange = event => {
     event.persist();
@@ -40,13 +43,13 @@ export default class ExpenseForm extends Component {
   };
 
   onSubmit = event => {
-  	event.preventDefault();
-  	this.props.onSubmit({
-		  description: this.state.description,
-		  note: this.state.note,
-		  amount: parseFloat(this.state.amount),
-		  createdAt: this.state.createdAt.valueOf()
-	  });
+    event.preventDefault();
+    this.props.onSubmit({
+      description: this.state.description,
+      note: this.state.note,
+      amount: parseFloat(this.state.amount),
+      createdAt: this.state.createdAt.valueOf()
+    });
   };
 
   render() {
@@ -54,7 +57,7 @@ export default class ExpenseForm extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <input
-	          name="description"
+            name="description"
             type="text"
             placeholder="Description"
             autoFocus
@@ -79,7 +82,7 @@ export default class ExpenseForm extends Component {
             isOutsideRange={() => false}
           />
           <textarea
-	          name="note"
+            name="note"
             placeholder="Add a note for your expense"
             value={this.state.note}
             onChange={this.onNoteChange}

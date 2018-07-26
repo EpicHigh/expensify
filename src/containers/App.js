@@ -1,12 +1,14 @@
 import React from "react";
-import Routes from "../routes"
-import Header from "../components/Header"
-import Navbar from "../components/Navbar"
+import Routes from "../routes";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 
-export default () => (
+const App = () => (
   <div>
-	  <Header/>
-	  <Navbar/>
-    <Routes/>
+    <Header />
+    <Navbar />
+    <Routes />
   </div>
 );
+
+export default App;
