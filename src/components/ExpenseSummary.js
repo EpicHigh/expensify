@@ -8,11 +8,8 @@ const ExpenseSummary = props => {
   return (
     <div>
       <h2>
-        There are {props.expenses.length}{" "}
-        {props.expenses.length > 1 ? "expenses" : "expense"}.
-      </h2>
-      <h2>
-        Total expenses:{" "}
+        Viewing {props.expenses.length}{" "}
+        {props.expenses.length > 1 ? "expenses" : "expense"} totaling{" "}
         {numeral(selectorExpenseTotal(props.expenses)).format("$0,0.00")}
       </h2>
     </div>
