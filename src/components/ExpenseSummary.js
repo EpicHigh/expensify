@@ -4,9 +4,13 @@ import selectorExpenseTotal from "../selectors/expense-total";
 import numeral from "numeral";
 import selectExpenses from "../selectors/expenses";
 
-const ExpenseTotal = props => {
+const ExpenseSummary = props => {
   return (
     <div>
+      <h2>
+        There are {props.expenses.length}{" "}
+        {props.expenses.length > 1 ? "expenses" : "expense"}.
+      </h2>
       <h2>
         Total expenses:{" "}
         {numeral(selectorExpenseTotal(props.expenses)).format("$0,0.00")}
@@ -21,4 +25,4 @@ const mapStateToProp = state => {
   };
 };
 
-export default connect(mapStateToProp)(ExpenseTotal);
+export default connect(mapStateToProp)(ExpenseSummary);
