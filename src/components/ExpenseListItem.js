@@ -4,18 +4,6 @@ import numeral from "numeral";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-numeral.register("locale", "th", {
-	delimiters: {
-		thousands: ',',
-		decimal: '.'
-	},
-  currency: {
-    symbol: "฿"
-  }
-});
-
-numeral.locale("th");
-
 const ExpenseListItem = ({ description, amount, createdAt, _id }) => (
   <div>
     <Link to={`/edit/${_id}`}>
