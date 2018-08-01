@@ -6,6 +6,7 @@ import App from "./containers/App";
 import configureStore from "./store/configure";
 import { BrowserRouter } from "react-router-dom";
 import registerServiceWorker from "./registerServiceWorker";
+import "./db/firebase"
 
 const store = configureStore();
 
