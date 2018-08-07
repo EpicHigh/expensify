@@ -10,13 +10,13 @@ const EditExpensePage = props => (
     <ExpenseForm
       expense={props.expense}
       onSubmit={update => {
-        props.dispatch(editExpense(props.expense._id, update));
+        props.dispatch(editExpense(props.expense.id, update));
         props.history.push("/");
       }}
     />
     <button
       onClick={() => {
-      	props.dispatch(removeExpense({ id: props.expense._id }));
+      	props.dispatch(removeExpense({ id: props.expense.id }));
 	      props.history.push("/");
       }}
     >
@@ -28,7 +28,7 @@ const EditExpensePage = props => (
 const mapStateToProps = (state, props) => {
   return {
     expense: state.expenses.find(
-      expense => expense._id === props.match.params.id
+      expense => expense.id === props.match.params.id
     )
   };
 };

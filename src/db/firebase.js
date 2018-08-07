@@ -1,58 +1,32 @@
 import firebase from "firebase";
 
 const config = {
-  apiKey: "AIzaSyBqPBlMD1Hj7pJCZ52kUQ-o6xlnO451Edk",
-  authDomain: "my-expensifier.firebaseapp.com",
-  databaseURL: "https://my-expensifier.firebaseio.com",
-  projectId: "my-expensifier",
-  storageBucket: "my-expensifier.appspot.com",
-  messagingSenderId: "305806075750"
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 
 firebase.initializeApp(config);
 
 const database = firebase.database();
 
-/*database.ref("expenses").push({
-  description: "Rent",
-  note: "Just a first month",
-  amount: 12500,
-  createdAt: 1533036980
+export {firebase , database as default}
+
+/*
+// child_removed
+database.ref("expenses").on("child_removed", (snapshot) => {
+	console.log(snapshot.key, snapshot.val())
 });
 
-database.ref("expenses").push({
-  description: "Water bill",
-  note: "Don't forget charge from my friend 25%",
-  amount: 500,
-  createdAt: 1533037061
-});*/
-// After, any values had changed, This method was called.
-// If you change "value" to "child_removed" then it logs every time after children will have been removed.
-database
-  .ref("expenses")
-  .on("value", DataSnapshot => {
-    const expenses = [];
-    DataSnapshot.forEach(childSnapshot => {
-      expenses.push({
-        id: childSnapshot.key,
-        ...childSnapshot.val()
-      });
-    });
-    console.log(expenses);
-  })
-  .catch(err => console.error(err));
+//child_changed
+database.ref("expenses").on("child_changed", (snapshot) => {
+	console.log(snapshot.key, snapshot.val())
+});
 
-database
-  .ref("expenses")
-  .once("value")
-  .then(DataSnapshot => {
-    const expenses = [];
-    DataSnapshot.forEach(childSnapshot => {
-      expenses.push({
-        id: childSnapshot.key,
-        ...childSnapshot.val()
-      });
-    });
-    console.log(expenses);
-  })
-  .catch(err => console.error(err));
+//child_added
+database.ref("expenses").on("child_added", (snapshot) => {
+	console.log(snapshot.key, snapshot.val())
+});*/

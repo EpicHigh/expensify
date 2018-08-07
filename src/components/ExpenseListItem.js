@@ -4,9 +4,9 @@ import numeral from "numeral";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-const ExpenseListItem = ({ description, amount, createdAt, _id }) => (
+const ExpenseListItem = ({ description, amount, createdAt, id }) => (
   <div>
-    <Link to={`/edit/${_id}`}>
+    <Link to={`/edit/${id}`}>
       <h3>{description}</h3>
     </Link>
     <p>

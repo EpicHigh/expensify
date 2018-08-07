@@ -1,28 +1,34 @@
-import uuid from "uuid";
-//PROVIDE THE KEY
-const key = () => {
-  const key = String(uuid());
-  return key.slice(0, key.indexOf(`-`, key.indexOf(`-`) + 1));
-};
+import database from "../db/firebase";
 // ADD EXPENSE
-const addExpense = ({
-  description = "",
-  note = "",
-  amount = 0,
-  createdAt = 0
-} = {}) => ({
+const addExpense = expense => ({
   type: "ADD_EXPENSE",
-  expense: {
-    _id: key(),
-    description,
-    note,
-    amount,
-    createdAt
-  }
-})
+  expense
+});
+const startAddExpense = (expenseData = {}) => {
+  return dispatch => {
+    const {
+      description = "",
+      note = "",
+      amount = 0,
+      createdAt = 0
+    } = expenseData;
+    const expense = { description, note, amount, createdAt };
+    database
+      .ref("expenses")
+      .push(expense)
+      .then(ref => {
+        dispatch(
+          addExpense({
+            id: ref.key,
+            ...expense
+          })
+        );
+      });
+  };
+};
 // REMOVE EXPENSE
 const removeExpense = ({ id } = {}) => ({ type: "REMOVE_EXPENSE", id });
 // EDIT EXPENSE
 const editExpense = (id, updates) => ({ type: "EDIT_EXPENSE", id, updates });
 // EXPORT
-export { addExpense, editExpense, removeExpense };
+export { editExpense, removeExpense, startAddExpense };

@@ -45,10 +45,10 @@ export default class ExpenseForm extends Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.onSubmit({
-      description: this.state.description,
-      note: this.state.note,
-      amount: parseFloat(this.state.amount),
-      createdAt: this.state.createdAt.valueOf()
+	    description: this.state.description,
+	    note: this.state.note,
+	    amount: parseFloat(this.state.amount),
+	    createdAt: this.state.createdAt.valueOf()
     });
   };
 
