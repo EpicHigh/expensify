@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import numeral from "numeral";
 
+
 numeral.register("locale", "th", {
   delimiters: {
     thousands: ",",
@@ -21,6 +22,7 @@ const App = () => (
     <Header />
     <Navbar />
     <Routes />
+
   </div>
 );
 
