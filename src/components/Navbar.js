@@ -1,14 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { startLogout } from "../actions/auth";
+import { connect } from "react-redux";
 
-const Navbar = () => (
+const Navbar = props => (
   <div>
     <nav>
-      <Link to="/">Dashboard</Link>
-      <Link to="/create">Create</Link>
-      <Link to="/help">Help</Link>
+      <NavLink to="/dashboard" activeClassName="is-active">
+        Dashboard
+      </NavLink>
+      <NavLink to="/create" activeClassName="is-active">
+        Create
+      </NavLink>
+      <NavLink to="/help" activeClassName="is-active">
+        Help
+      </NavLink>
+      <button onClick={props.startLogout}>Logout</button>
     </nav>
   </div>
 );
 
-export default Navbar;
+const mapDispatchToProps = dispatch => ({
+  startLogout: () => dispatch(startLogout())
+});
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(Navbar);

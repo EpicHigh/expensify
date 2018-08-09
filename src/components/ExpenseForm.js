@@ -87,9 +87,7 @@ export default class ExpenseForm extends Component {
             value={this.state.note}
             onChange={this.onNoteChange}
           />
-          {this.state.createdAt &&
-          this.state.amount &&
-          this.state.description ? (
+          {this.props.expense ? (
             <button>Edit Expense</button>
           ) : (
             <button>Add Expense</button>
