@@ -32,7 +32,7 @@ See also the list of [contributors](https://github.com/EpicHigh/expensify/graphs
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/EpicHigh/expensify/blob/master/LICENSE) file for details
 
 ## Acknowledgments
 
