@@ -3,6 +3,13 @@ import moment from "moment";
 import { SingleDatePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
+import {
+  TextInput,
+  NoteTextArea,
+  StyledForm,
+  ErrorArea,
+  AddAndEditButton
+} from "../styles/common";
 
 export default class ExpenseForm extends Component {
   constructor(props) {
@@ -55,8 +62,9 @@ export default class ExpenseForm extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
-          <input
+        <StyledForm onSubmit={this.onSubmit}>
+          {this.state.error && <ErrorArea>{this.state.error}</ErrorArea>}
+          <TextInput
             name="description"
             type="text"
             placeholder="Description"
@@ -65,7 +73,7 @@ export default class ExpenseForm extends Component {
             onChange={this.onDescriptionChange}
             required
           />
-          <input
+          <TextInput
             type="text"
             placeholder="Amount"
             name="amount"
@@ -81,18 +89,18 @@ export default class ExpenseForm extends Component {
             numberOfMonths={1}
             isOutsideRange={() => false}
           />
-          <textarea
+          <NoteTextArea
             name="note"
             placeholder="Add a note for your expense"
             value={this.state.note}
             onChange={this.onNoteChange}
           />
           {this.props.expense ? (
-            <button>Edit Expense</button>
+            <AddAndEditButton>Edit Expense</AddAndEditButton>
           ) : (
-            <button>Add Expense</button>
+            <AddAndEditButton>Add Expense</AddAndEditButton>
           )}
-        </form>
+        </StyledForm>
       </div>
     );
   }

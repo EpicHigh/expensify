@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { Router } from "react-router-dom";
-import createHistory from "history/createBrowserHistory"
+import createHistory from "history/createBrowserHistory";
 import App from "./containers/App";
 import LoadingPage from "./pages/LoadingPage";
 import configureStore from "./store/configure";
@@ -38,7 +38,7 @@ firebase.auth().onAuthStateChanged(user => {
       .dispatch(startSetExpenses())
       .then(() => {
         setTimeout(() => {
-	        renderApp();
+          renderApp();
           history.location.pathname === "/" && history.push("/dashboard");
         }, 5000);
       })
@@ -47,7 +47,7 @@ firebase.auth().onAuthStateChanged(user => {
       });
   } else {
     store.dispatch(logout());
-	  renderApp();
+    renderApp();
     history.push("/");
   }
 });

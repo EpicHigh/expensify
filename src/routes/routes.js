@@ -1,13 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import HelpPage from "../pages/HelpPage";
 import AddExpensePage from "../pages/AddExpensePage";
 import EditExpensePage from "../pages/EditExpensePage";
 import ExpenseDashBoardPage from "../pages/ExpenseDashBoardPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import LoginPage from "../pages/LoginPage";
-import PrivateRoute from "./PrivateRoute"
-import PublicRoute from "./PublicRoute"
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 const Routes = () => (
   <div>
@@ -16,7 +15,6 @@ const Routes = () => (
       <PrivateRoute path="/dashboard" component={ExpenseDashBoardPage} exact />
       <PrivateRoute path="/create" component={AddExpensePage} exact />
       <PrivateRoute path="/edit/:id" component={EditExpensePage} exact />
-      <Route path="/help" component={HelpPage} exact />
       <Route component={NotFoundPage} />
     </Switch>
   </div>
