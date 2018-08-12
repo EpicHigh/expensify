@@ -25,20 +25,21 @@ export default class ExpenseForm extends Component {
   }
 
   onDescriptionChange = event => {
-    event.persist();
-    this.setState({ description: event.target.value });
+    const description = String(event.target.value);
+    description.length < 45 && this.setState({ description });
   };
 
   onAmountChange = event => {
     const amount = String(event.target.value);
-    !amount.startsWith(".") &&
+    amount.length < 18 &&
+      !amount.startsWith(".") &&
       amount.match(/^\d*(\.\d{0,2})?$/) &&
       this.setState({ amount });
   };
 
   onNoteChange = event => {
-    event.persist();
-    this.setState({ note: event.target.value });
+    const note = String(event.target.value);
+    note.length < 150 && this.setState({ note });
   };
 
   onDateChange = createdAt => {
